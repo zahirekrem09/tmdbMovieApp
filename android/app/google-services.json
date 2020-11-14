@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "113854070026",
+    "firebase_url": "https://tmbpapp.firebaseio.com",
+    "project_id": "tmbpapp",
+    "storage_bucket": "tmbpapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:113854070026:android:63263f129374a7334c4ef3",
+        "android_client_info": {
+          "package_name": "com.tmdbapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "113854070026-9pmrhqr2h8ifkbio7endmgge4gpje6eg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-hG8shHbA09aKGHdPCmuPErICIbchW9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "113854070026-9pmrhqr2h8ifkbio7endmgge4gpje6eg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
