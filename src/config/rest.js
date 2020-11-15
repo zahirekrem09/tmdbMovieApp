@@ -197,9 +197,11 @@ export const getVideos = async (category, movie_id) => {
   return results;
 };
 
-export const getSearchMovies = async (query) => {
-  let API_URL = `${search_url}movie?api_key=${api_key}&language=en-US&query=${query}&page=1&include_adult=false`;
-  const {results} = await fetch(API_URL).then((res) => res.json());
+export const getSearchMovies = async (query, page) => {
+  let API_URL = `${search_url}movie?api_key=${api_key}&language=en-US&query=${query}&page=${page}&include_adult=false`;
+  const {results, total_results, total_pages} = await fetch(
+    API_URL,
+  ).then((res) => res.json());
   const movies = results.map(
     ({
       id,
@@ -221,13 +223,19 @@ export const getSearchMovies = async (query) => {
       genres: genre_ids.map((genre) => genres_data[genre]),
     }),
   );
-
-  return movies;
+  const data = {
+    movies: movies,
+    total_results: total_results,
+    total_pages: total_pages,
+  };
+  return data;
 };
 export const getSearchTVShows = async (query, page) => {
   let API_URL = `${search_url}tv?api_key=${api_key}&language=en-US&query=${query}&page=${page}&include_adult=false`;
-  const {results} = await fetch(API_URL).then((res) => res.json());
-  const tvShows = results.map(
+  const {results, total_results, total_pages} = await fetch(
+    API_URL,
+  ).then((res) => res.json());
+  const tvShows = results?.map(
     ({
       id,
       original_name,
@@ -248,8 +256,12 @@ export const getSearchTVShows = async (query, page) => {
       genres: genre_ids.map((genre) => genres_data[genre]),
     }),
   );
-
-  return tvShows;
+  const data = {
+    tvShows: tvShows,
+    total_results: total_results,
+    total_pages: total_pages,
+  };
+  return data;
 };
 // https://api.themoviedb.org/3/search/movie?api_key=3488df73f1d5f6c1480437e6ce92b833&language=en-US&query=dark&page=1&include_adult=false  getSearchTVShows
 // https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=3488df73f1d5f6c1480437e6ce92b833&language=en-US&page=1

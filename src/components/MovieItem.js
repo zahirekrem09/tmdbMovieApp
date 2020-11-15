@@ -53,7 +53,7 @@ const MovieItem = (props) => {
             source={{uri: singleData.poster}}
           />
           <View style={{position: 'absolute', right: 5, bottom: 10}}>
-            <ReleaseDate label={singleData.releaseDate.slice(0, 4)} />
+            <ReleaseDate label={singleData.releaseDate?.slice(0, 4)} />
           </View>
           <View>
             <Rating rating={singleData.rating} />

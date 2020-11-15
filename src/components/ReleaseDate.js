@@ -11,7 +11,7 @@ const {width} = Dimensions.get('window');
 
 const ReleaseDate = ({label}) => (
   <View style={styles.dateLabel}>
-    <Text style={styles.dateText}>{label.slice(0, 4)}</Text>
+    <Text style={styles.dateText}>{label?.slice(0, 4)}</Text>
   </View>
 );
 

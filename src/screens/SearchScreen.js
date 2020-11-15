@@ -17,51 +17,74 @@ import {HeaderBtn} from '../components/HeaderBtn';
 import {getSearchMovies, getSearchTVShows} from '../config/rest';
 import {MovieItem} from '../components/MovieItem';
 const SearchScreen = ({navigation}) => {
-  const [data, setData] = useState(null);
+  const [dataList, setListData] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState('');
   const [category, setCategory] = useState('Movie');
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(null);
+  const [totalResults, setTotalResults] = useState(null);
   const {colors} = useTheme();
   const handleSearchChange = (val) => {
+    setPage(1);
+    setListData([]);
     setQuery(val);
   };
 
-  const handleSearch = async (p) => {
-    console.log(data);
+  useEffect(() => {
+    setIsLoading(false);
+    handleSearch();
+    return () => {};
+  }, [page]);
+
+  const handleSearch = async () => {
+    setIsLoading(true);
     if (category === 'Movie') {
-      const movies = await getSearchMovies(query, p + 1);
+      const data = await getSearchMovies(query, page);
       // const updateData = [...data, ...movies];
-      setData(movies);
+      setListData(dataList?.concat(data?.movies));
+      setTotalPages(data?.total_pages);
+      setTotalResults(data?.total_results);
     } else {
-      const tvShows = await getSearchTVShows(query, p + 1);
-      setData(tvShows);
+      const data = await getSearchTVShows(query, page);
+      setListData(dataList?.concat(data?.tvShows));
+      setTotalPages(data?.total_pages);
+      setTotalResults(data?.total_results);
     }
-    setQuery('');
+  };
+  const handleLoadMore = () => {
+    if (totalPages >= page) {
+      setPage(page + 1);
+      setIsLoading(true);
+    }
+    setIsLoading(false);
   };
   const renderSearchItem = ({item}) => (
     <MovieItem singleData={item} category={category} />
   );
+  const renderFooter = () => {
+    return isLoading ? (
+      <View style={{marginTop: 10, alignItems: 'center'}}>
+        <ActivityIndicator size="large" color="tomato" />
+      </View>
+    ) : null;
+  };
   let Content =
-    data?.length != 0 ? (
+    dataList !== null ? (
       <FlatList
-        data={data}
+        data={dataList}
         renderItem={renderSearchItem}
         keyExtractor={(item) => item.key}
         numColumns={2}
         showsVerticalScrollIndicator={false}
-        // horizontal
-        // onEndReachedThreshold={0.5}
-        // onEndReached={({distanceFromEnd}) => {
-        //   setPage(page + 1);
-        //   handleSearch(page);
-        // }}
+        ListFooterComponent={renderFooter}
+        onEndReachedThreshold={0.8}
+        onEndReached={handleLoadMore}
       />
     ) : (
       //TODO: //UseEfeect kullanarak page güncellemeye calışalım...
       <View style={styles.noFound}>
-        <Text style={[styles.noFoundText, {color: colors.text}]}>
-          No found news
-        </Text>
+        <Text style={[styles.noFoundText, {color: colors.text}]}>No found</Text>
       </View>
     );
   return (
@@ -96,6 +119,13 @@ const SearchScreen = ({navigation}) => {
           value={query}
         />
       </View>
+      {totalResults ? (
+        <View style={{flexDirection: 'row'}}>
+          <HeaderBtn label={`Page: ${page - 1}-${totalPages}`} focused />
+          <HeaderBtn label={`Total Results: ${totalResults}`} focused />
+        </View>
+      ) : null}
+
       {Content}
     </View>
   );
