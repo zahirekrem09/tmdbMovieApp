@@ -5,7 +5,9 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 
 export default function Rating({rating}) {
   const filledStars = Math.floor(rating / 2);
+  //empty star
   const maxStars = Array(5 - filledStars).fill('staro');
+  // empty and full star
   const r = [...Array(filledStars).fill('star'), ...maxStars];
 
   return (

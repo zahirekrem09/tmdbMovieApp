@@ -1,6 +1,6 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {OnboardingScreen, SignUpScreen, LoginScreen} from '../screens';
-
 import {createStackNavigator} from '@react-navigation/stack';
 
 const AuthStack = createStackNavigator();

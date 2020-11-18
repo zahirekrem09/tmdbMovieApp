@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -22,14 +23,7 @@ const SearchStackScreen = ({navigation}) => (
             onPress={() => navigation.openDrawer()}
           />
         ),
-        // headerRight: () => (
-        //   <Icon.Button
-        //     name="bookmarks"
-        //     size={25}
-        //     backgroundColor="#01b4e4"
         //     onPress={() => navigation.navigate('Bookmark')}
-        //   />
-        // ),
       }}
     />
     <SearchStack.Screen
@@ -45,14 +39,6 @@ const SearchStackScreen = ({navigation}) => (
             onPress={() => navigation.openDrawer()}
           />
         ),
-        // headerRight: () => (
-        //   <Icon.Button
-        //     name="bookmarks"
-        //     size={25}
-        //     backgroundColor="#01b4e4"
-        //     onPress={() => navigation.navigate('Bookmark')}
-        //   />
-        // ),
       }}
     />
   </SearchStack.Navigator>

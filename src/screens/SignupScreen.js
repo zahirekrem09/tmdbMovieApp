@@ -99,7 +99,6 @@ const SignUpScreen = ({navigation}) => {
   };
   return (
     <View style={styles.container}>
-      {/* <StatusBar backgroundColor="#7952B3" barStyle="light-content" /> */}
       <View style={styles.header}>
         <Text style={styles.text_header}> Register Now 🔥 </Text>
       </View>

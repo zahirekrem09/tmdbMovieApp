@@ -215,7 +215,10 @@ export const getSearchMovies = async (query, page) => {
     }) => ({
       key: String(id),
       title: original_title,
-      poster: getImagePath(poster_path),
+      poster:
+        poster_path !== null
+          ? getImagePath(poster_path)
+          : 'https://cdn4.vectorstock.com/i/thumb-large/06/18/male-avatar-profile-picture-vector-10210618.jpg',
       backdrop: getBackdropPath(backdrop_path),
       rating: vote_average,
       description: overview,

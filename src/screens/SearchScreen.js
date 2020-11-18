@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, {Component, useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Text,
   View,
@@ -7,7 +7,6 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
-  Platform,
   FlatList,
 } from 'react-native';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
@@ -82,7 +81,7 @@ const SearchScreen = ({navigation}) => {
         onEndReached={handleLoadMore}
       />
     ) : (
-      //TODO: //UseEfeect kullanarak page güncellemeye calışalım...
+      //TODO✔: //UseEfeect kullanarak page güncellemeye calışalım...✔
       <View style={styles.noFound}>
         <Text style={[styles.noFoundText, {color: colors.text}]}>No found</Text>
       </View>
@@ -95,7 +94,7 @@ const SearchScreen = ({navigation}) => {
             key={`header-btn-${i}`}
             label={headerBtn}
             onPress={() => setCategory(headerBtn)}
-            focused={headerBtn == category}
+            focused={headerBtn === category}
           />
         ))}
       </View>

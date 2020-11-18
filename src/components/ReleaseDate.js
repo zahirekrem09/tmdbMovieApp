@@ -1,13 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  Dimensions,
-  View,
-} from 'react-native';
-const {width} = Dimensions.get('window');
+import {Text, StyleSheet, View} from 'react-native';
 
 const ReleaseDate = ({label}) => (
   <View style={styles.dateLabel}>

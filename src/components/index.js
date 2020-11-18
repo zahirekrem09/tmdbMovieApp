@@ -1,2 +1,3 @@
-export * from './Input';
+/* eslint-disable prettier/prettier */
+
 export * from './Button';

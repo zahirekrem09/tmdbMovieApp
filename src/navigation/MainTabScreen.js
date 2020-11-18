@@ -1,12 +1,9 @@
 /* eslint-disable prettier/prettier */
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon2 from 'react-native-vector-icons/MaterialIcons';
 import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
-import {HomeScreen, SearchScreen, WishlistScreen} from '../screens';
 
 import HomeStackScreen from './HomeStackScreen';
 import WishlistStackScreen from './WishlistStackScreen';

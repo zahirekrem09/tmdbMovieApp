@@ -23,14 +23,6 @@ const WishlistStackScreen = ({navigation}) => (
             onPress={() => navigation.openDrawer()}
           />
         ),
-        // headerRight: () => (
-        //   <Icon.Button
-        //     name="bookmarks"
-        //     size={25}
-        //     backgroundColor="#01b4e4"
-        //     onPress={() => navigation.navigate('Bookmark')}
-        //   />
-        // ),
       }}
     />
     <WishlisthStack.Screen
@@ -46,14 +38,6 @@ const WishlistStackScreen = ({navigation}) => (
             onPress={() => navigation.goBack()}
           />
         ),
-        // headerRight: () => (
-        //   <Icon.Button
-        //     name="bookmarks"
-        //     size={25}
-        //     backgroundColor="#01b4e4"
-        //     onPress={() => navigation.navigate('Bookmark')}
-        //   />
-        // ),
       }}
     />
   </WishlisthStack.Navigator>

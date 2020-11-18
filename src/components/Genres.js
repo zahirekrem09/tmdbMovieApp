@@ -7,7 +7,7 @@ export default function Genres({genres}) {
     <View style={styles.genres}>
       {genres.map((genre, i) => {
         return (
-          <View key={genre} style={styles.genre}>
+          <View key={i} style={styles.genre}>
             <Text style={styles.genreText}>{genre}</Text>
           </View>
         );

@@ -6,7 +6,6 @@ import {
   TouchableOpacity,
   Dimensions,
   StyleSheet,
-  StatusBar,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -24,7 +23,7 @@ const OnboardingScreen = ({navigation}) => {
           style={styles.logo}
           resizeMode="stretch"
         />
-        <Text style={styles.logoText}></Text>
+        {/* <Text style={styles.logoText}></Text> */}
       </View>
       <Animatable.View style={styles.footer} animation="fadeInUpBig">
         <Text style={styles.title}>Follow the agenda with TMDB Movies 🔥</Text>
